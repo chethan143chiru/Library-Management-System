@@ -1,0 +1,185 @@
+/* static/css/style.css
+   Clean, minimal styles for the Library Management System
+   Works with Bootstrap defaults; these add spacing, card accents, and small UI tweaks.
+*/
+
+/* ------- Base tweaks ------- */
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background-color: #f8fafc; /* soft light bg */
+  color: #1f2937;
+  padding-bottom: 48px;
+}
+
+.container { max-width: 1100px; }
+
+/* ------- Navbar tweaks ------- */
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.navbar .nav-link {
+  color: #374151 !important;
+}
+
+/* ------- Headings and utility ------- */
+h1, h2, h3 { font-weight: 600; color: #0f172a; }
+h2 { margin-bottom: 1rem; }
+.lead { color: #334155; }
+
+/* ------- Cards / small panels ------- */
+.card {
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+.panel {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(15,23,42,0.04);
+}
+
+/* ------- Lists (users, books, issued) ------- */
+.list-group-item {
+  border: 0;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(2,6,23,0.03);
+}
+.list-group-item small { color: #6b7280; }
+
+/* ------- Buttons (accent) ------- */
+.btn-primary {
+  background: linear-gradient(90deg,#0ea5a1,#0ea5a1);
+  border: none;
+  box-shadow: 0 6px 16px rgba(14,165,161,0.12);
+  border-radius: 8px;
+  padding: 8px 14px;
+}
+.btn-success {
+  border-radius: 8px;
+  padding: 8px 14px;
+}
+.btn-outline-primary, .btn-outline-success {
+  border-radius: 8px;
+  padding: 6px 12px;
+}
+
+/* ------- Forms ------- */
+.form-control {
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid #e6edf3;
+  box-shadow: none;
+}
+.form-control:focus {
+  border-color: #7dd3fc;
+  box-shadow: 0 6px 18px rgba(125,211,252,0.12);
+}
+
+/* ------- Small info badges ------- */
+.badge {
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* ------- Alerts spacing tweak (Bootstrap uses .alert) ------- */
+.alert {
+  border-radius: 10px;
+}
+
+/* ------- Avatars / photos ------- */
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+  box-shadow: 0 6px 16px rgba(2,6,23,0.06);
+}
+
+/* ------- File upload preview block ------- */
+.upload-preview {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+.upload-preview img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e6edf3;
+}
+
+/* ------- Book list item layout ------- */
+.book-meta { max-width: 70%; }
+.book-actions { text-align: right; min-width: 160px; }
+
+/* ------- Table styling for wide lists ------- */
+.table-custom {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+}
+.table-custom th, .table-custom td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.table-custom th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+}
+
+/* ------- Small helpers ------- */
+.text-muted-sm { color: #6b7280; font-size: 0.9rem; }
+.muted { color: #94a3b8; }
+
+/* ------- Responsive adjustments ------- */
+@media (max-width: 768px) {
+  .book-meta { max-width: 100%; }
+  .book-actions { min-width: auto; margin-top: 8px; text-align: left; }
+  .avatar { width: 48px; height: 48px; }
+  .container { padding-left: 12px; padding-right: 12px; }
+}
+
+/* ------- Tiny utility classes ------- */
+.mt-1 { margin-top: .25rem; }
+.mt-2 { margin-top: .5rem; }
+.mt-3 { margin-top: 1rem; }
+.mb-1 { margin-bottom: .25rem; }
+.mb-2 { margin-bottom: .5rem; }
+.p-2 { padding: .5rem; }
+.p-3 { padding: 1rem; }
+.text-success-small { color: #16a34a; font-weight: 600; }
+.btn {
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.alert {
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+/* End of file */

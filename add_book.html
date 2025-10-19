@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Add Book</h3>
+<form method="post" enctype="multipart/form-data">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">{{ form.title.label }} {{ form.title(class="form-control") }}</div>
+  <div class="mb-3">{{ form.author.label }} {{ form.author(class="form-control") }}</div>
+  <div class="mb-3">{{ form.publisher.label }} {{ form.publisher(class="form-control") }}</div>
+  <div class="mb-3">{{ form.year.label }} {{ form.year(class="form-control") }}</div>
+  <div class="mb-3">{{ form.category.label }} {{ form.category(class="form-control") }}</div>
+  <div class="mb-3">{{ form.copies.label }} {{ form.copies(class="form-control") }}</div>
+  <div class="mb-3">{{ form.ebook.label }} {{ form.ebook(class="form-control") }}</div>
+  {{ form.submit(class="btn btn-success") }}
+</form>
+<a href="{{ url_for('admin.admin_dashboard') }}" class="btn btn-secondary mt-3">Back</a>
+
+
+{% endblock %}

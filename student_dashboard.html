@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Welcome, {{ student.name }}</h2>
+{% if student.photo %}
+  <img src="{{ url_for('static', filename='uploads/' + student.photo) }}" 
+       alt="Student Photo" class="img-thumbnail" width="150">
+{% else %}
+  <p>No photo uploaded</p>
+{% endif %}
+
+<h5>Your Issued Books</h5>
+<ul class="list-group mb-3">
+  {% for i in issued %}
+  <li class="list-group-item">
+    {{ i.book.title }} — {{ i.issue_date }} to {{ i.due_date }}
+    {% if i.return_date %} <span class="text-success">Returned: {{ i.return_date }}</span>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+<h5>All Books</h5>
+<ul class="list-group">
+  {% for b in books %}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div>
+      {{ b.title }} — {{ b.author }} <br/>
+      <small>Available copies: {{ b.copies }}</small>
+    </div>
+    <div>
+      {% if b.ebook_filename %}
+        <a class="btn btn-sm btn-outline-primary" href="{{ url_for('student.read_online', book_id=b.id) }}" target="_blank">Read</a>
+        <a class="btn btn-sm btn-outline-success" href="{{ url_for('student.download', filename=b.ebook_filename) }}">Download</a>
+      {% endif %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+<a href="{{ url_for('auth.logout') }}" class="btn btn-danger mt-3">Logout</a>
+{% endblock %}

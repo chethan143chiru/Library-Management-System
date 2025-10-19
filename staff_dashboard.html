@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Staff Dashboard</h2>
+<h2>Welcome, {{ staff.name }}</h2>
+
+{% if staff.photo %}
+  <img src="{{ url_for('static', filename='uploads/' + staff.photo) }}" 
+       alt="Staff Photo" class="img-thumbnail" width="150">
+{% else %}
+  <p>No photo uploaded</p>
+{% endif %}
+
+<div class="mb-3">
+  <a class="btn btn-success" href="{{ url_for('staff.add_book_staff') }}">Add Book</a>
+  <a class="btn btn-primary" href="{{ url_for('staff.issue_book') }}">Issue Book</a>
+</div>
+
+<h5>Books</h5>
+<ul class="list-group mb-3">
+  {% for b in books %}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    {{ b.title }} ({{ b.copies }})
+    <form method="post" action="{{ url_for('staff.delete_book_staff', book_id=b.id) }}" onsubmit="return confirm('Delete this book?');">
+      <button class="btn btn-sm btn-danger">Delete</button>
+    </form>
+    <a href="{{ url_for('staff.view_book_staff', book_id=book.id) }}" class="btn btn-info btn-sm">View</a>
+
+  </li>
+  {% endfor %}
+</ul>
+
+<h5>Issued Records</h5>
+<ul class="list-group">
+  {% for i in issued %}
+  <li class="list-group-item">
+    {{ i.book.title }} → {{ i.student.name }} | {{ i.issue_date }} to {{ i.due_date }}
+    {% if i.return_date %}<span class="text-success"> (Returned {{ i.return_date }})</span>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+<a href="{{ url_for('auth.logout') }}" class="btn btn-danger mt-3">Logout</a>
+{% endblock %}

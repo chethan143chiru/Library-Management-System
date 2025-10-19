@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+
+<div class="row">
+  <div class="col-md-4">
+    <h5>Users</h5>
+    <a class="btn btn-sm btn-primary mb-2" href="{{ url_for('admin.register_student') }}">Register Student</a>
+    <a class="btn btn-sm btn-secondary mb-2" href="{{ url_for('admin.register_staff') }}">Register Staff</a>
+    <ul class="list-group">
+      {% for s in students %}
+      <li class="list-group-item">{{ s.name }} — {{ s.usn }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="col-md-4">
+    <h5>Books</h5>
+    <a class="btn btn-sm btn-success mb-2" href="{{ url_for('admin.add_book') }}">Add Book</a>
+    <ul class="list-group">
+      {% for b in books %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{ b.title }} ({{ b.copies }})
+        <form method="post" action="{{ url_for('admin.delete_book', book_id=b.id) }}" onsubmit="return confirm('Delete book?');">
+          <button class="btn btn-sm btn-danger">Delete</button>
+        </form>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="col-md-4">
+    <h5>Issued</h5>
+    <ul class="list-group">
+      {% for i in issued %}
+      <li class="list-group-item">
+        {{ i.book.title }} → {{ i.student.name }} | {{ i.issue_date }} to {{ i.due_date }}
+        {% if not i.return_date %}
+        <form method="post" action="{{ url_for('admin.return_book', issue_id=i.id) }}">
+          <button class="btn btn-sm btn-outline-success mt-2">Mark Return</button>
+        </form>
+        {% else %}
+        <div class="text-success">Returned: {{ i.return_date }}</div>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<a href="{{ url_for('auth.logout') }}" class="btn btn-danger mt-3">Logout</a>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Register Staff</h2>
+<form method="post" enctype="multipart/form-data">
+  {{ form.hidden_tag() }}
+  
+  <div class="mb-3">
+    {{ form.name.label }} {{ form.name(class="form-control") }}
+  </div>
+
+  <div class="mb-3">
+    {{ form.staff_id.label }} {{ form.staff_id(class="form-control") }}
+  </div>
+
+  <div class="mb-3">
+    {{ form.photo.label }} {{ form.photo(class="form-control") }}
+  </div>
+
+  {{ form.submit(class="btn btn-primary") }}
+</form>
+<a href="{{ url_for('admin.admin_dashboard') }}" class="btn btn-secondary mt-3">Back</a>
+
+
+{% endblock %}

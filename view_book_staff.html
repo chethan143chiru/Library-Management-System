@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Book Details (Staff)</h2>
+
+<ul class="list-group">
+  <li class="list-group-item"><strong>ID:</strong> {{ book.id }}</li>
+  <li class="list-group-item"><strong>Title:</strong> {{ book.title }}</li>
+  <li class="list-group-item"><strong>Author:</strong> {{ book.author }}</li>
+  <li class="list-group-item"><strong>Publisher:</strong> {{ book.publisher }}</li>
+  <li class="list-group-item"><strong>Year:</strong> {{ book.year }}</li>
+  <li class="list-group-item"><strong>Category:</strong> {{ book.category }}</li>
+  <li class="list-group-item"><strong>Copies:</strong> {{ book.copies }}</li>
+  {% if book.ebook_filename %}
+  <li class="list-group-item">
+    <strong>eBook:</strong>
+    <a href="{{ url_for('staff.uploads', filename=book.ebook_filename) }}" target="_blank">Download / View</a>
+  </li>
+  {% endif %}
+</ul>
+
+<a href="{{ url_for('staff.staff_dashboard') }}" class="btn btn-secondary mt-3">Back</a>
+<a href="{{ url_for('auth.logout') }}" class="btn btn-danger mt-3">Logout</a>
+{% endblock %}
