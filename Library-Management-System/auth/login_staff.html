@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Staff Login</h2>
+<form method="post">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">
+    {{ form.staff_id.label }} {{ form.staff_id(class="form-control") }}
+  </div>
+  {{ form.submit(class="btn btn-secondary") }}
+</form>
+<a href="{{ url_for('admin.admin_dashboard') }}" class="btn btn-secondary mt-3">Back</a>
+{% endblock %}

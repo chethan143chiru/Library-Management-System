@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="text-center">
+  <h1>Library Management System</h1>
+  <p class="lead">Choose how you want to login</p>
+  <div class="d-flex justify-content-center gap-3 mt-4">
+    <a href="{{ url_for('auth.login_admin') }}" class="btn btn-primary">Admin Login</a>
+    <a href="{{ url_for('auth.login_student') }}" class="btn btn-success">Student Login</a>
+    <a href="{{ url_for('auth.login_staff') }}" class="btn btn-secondary">Staff Login</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Registered Students</h2>
+<table class="table table-bordered">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>USN</th>
+    <th>Photo</th>
+  </tr>
+  {% for s in students %}
+  <tr>
+    <td>{{ s.id }}</td>
+    <td>{{ s.name }}</td>
+    <td>{{ s.usn }}</td>
+    <td>
+      {% if s.photo_filename %}
+        <img src="{{ url_for('static', filename='uploads/' ~ s.photo_filename) }}" alt="photo" width="100">
+      {% else %}
+        No Photo
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

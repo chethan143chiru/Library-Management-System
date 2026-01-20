@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Issue Book</h3>
+<form method="post">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">{{ form.usn.label }} {{ form.usn(class="form-control") }}</div>
+  <div class="mb-3">{{ form.book_id.label }} {{ form.book_id(class="form-control") }}</div>
+  <div class="mb-3">{{ form.issue_date.label }} {{ form.issue_date(class="form-control") }}</div>
+  <div class="mb-3">{{ form.due_date.label }} {{ form.due_date(class="form-control") }}</div>
+  {{ form.submit(class="btn btn-primary") }}
+</form>
+<a href="{{ url_for('admin.admin_dashboard') }}" class="btn btn-secondary mt-3">Back</a>
+
+{% endblock %}

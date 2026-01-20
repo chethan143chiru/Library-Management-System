@@ -1,0 +1,18 @@
+
+{% extends "layout.html" %}
+{% block content %}
+<h3>Available Books</h3>
+<ul class="list-group">
+  {% for b in books %}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    {{ b.title }} — {{ b.author }} ({{ b.copies }} copies)
+    {% if b.ebook_filename %}
+    <div>
+      <a class="btn btn-sm btn-outline-primary" href="{{ url_for('student.read_online', book_id=b.id) }}" target="_blank">Read</a>
+      <a class="btn btn-sm btn-outline-success" href="{{ url_for('student.download', filename=b.ebook_filename) }}">Download</a>
+    </div>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
